@@ -6,6 +6,7 @@ This project demonstrates Linux administration, Bash scripting, disk monitoring,
 
 ## Project Structure
 
+```text
 assignment-1/
 ├── README.md
 ├── system-info.sh
@@ -14,6 +15,7 @@ assignment-1/
 ├── grade.sh
 └── logs/
     └── .gitkeep
+
 
 ## Requirements
 
@@ -26,7 +28,7 @@ assignment-1/
 
 Clone the repository and enter the project directory:
 
-git clone <repo-url>
+git clone YOUR-REPOSITORY-URL
 cd assignment-1
 
 Make the Bash scripts executable:
@@ -35,65 +37,76 @@ chmod +x *.sh
 
 ## Usage
 
+### System information
+
+./system-info.sh
+
+### Disk usage check
+
+./disk-check.sh <threshold> [path]
+
+### Network check
+
+./network-check.sh <hostname-or-ip> [port]
+
+## Logging
+
+The scripts create log files in the `logs/` directory.
+
+- `logs/disk-check.log` records disk usage checks and invalid input.
+- `logs/network-check.log` records network checks, connectivity results, and port checks.
+
+## Testing
+
+Run the grading script from the project directory:
+
+./grade.sh
+
+The grader checks required files, Bash syntax, executable permissions, script output, argument validation, logging, and Git history.
+./network-check.sh not-a-real-host-12345
+
+## Assumptions
+
+- The scripts are intended to run on Linux or WSL.
+- Standard Linux utilities used by the scripts are available.
+- No cloud deployment is required for this assignment.
+- No passwords, tokens, private keys, or other secrets are stored in the repository.
+
+
+## Usage
+
 ### System Information
 
 Run the system information script:
 
+```bash
 ./system-info.sh
-
-The script displays hostname, current user, date/time, operating system, kernel version, uptime, CPU information, memory information, and current working directory.
-
-### Disk Check
-
-Run the disk check with a threshold percentage:
-
 ./disk-check.sh 80
-
-The threshold must be an integer from 1 to 100. The default path is the root filesystem (/).
-
-You can also specify a path:
-
-./disk-check.sh 80 /
-
-### Network Check
-
-Run the network check with a hostname or IP address:
-
 ./network-check.sh google.com
-
-The script resolves the host, performs a basic connectivity check, and displays network interface information.
-
-You can also check a TCP port:
-
 ./network-check.sh google.com 443
-
-The port must be an integer from 1 to 65535.
-
 ## Logging
 
-The scripts create useful log entries in the logs/ directory. Each log entry includes a timestamp and a description of the operation performed.
+The scripts create useful log entries in the `logs/` directory. Each log entry includes a timestamp and a description of the operation performed.
 
-The disk check writes to logs/disk-check.log.
-The network check writes to logs/network-check.log.
+The disk check writes to `logs/disk-check.log`.
+
+The network check writes to `logs/network-check.log`.
 
 ## Testing
 
 Test the scripts with valid and invalid inputs.
 
 System information:
-./system-info.sh
 
-Disk check:
+```bash
+./system-info.sh
 ./disk-check.sh 100
 ./disk-check.sh 101
-
-Network check:
 ./network-check.sh google.com
 ./network-check.sh google.com 443
 ./network-check.sh google.com 99999
 ./network-check.sh not-a-real-host-12345
 
-The scripts return appropriate exit codes for valid and invalid input and write useful log entries to the logs/ directory.
 
 ## Assumptions
 
