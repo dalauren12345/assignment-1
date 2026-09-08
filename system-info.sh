@@ -1,0 +1,13 @@
+#!/bin/bash
+echo "===== SYSTEM INFORMATION ====="
+echo "Hostname: $(hostname)"
+echo "Current User: $(whoami)"
+echo "Date/Time: $(date)"
+echo "Operating System: $(grep PRETTY_NAME /etc/os-release | cut -d= -f2 | tr -d '"')"
+echo "Kernel Version: $(uname -r)"
+echo "Uptime: $(uptime -p)"
+echo "CPU Information:"
+lscpu | grep "Model name"
+echo "Memory Information:"
+free -h
+echo "Current Working Directory: $(pwd)"
